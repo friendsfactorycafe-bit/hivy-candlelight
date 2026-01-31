@@ -8,10 +8,11 @@
  * - 8 Service category pages (priority 0.9)
  * - 6 Package detail pages (priority 0.85)
  * - 113 Service keyword pages (priority 0.8)
+ * - 21 Candle Light Dinner keyword pages (priority 0.85)
  * - 40 Surat area pages (priority 0.7)
  * - 25 Blog posts (priority 0.6)
  * 
- * Last Updated: January 2026
+ * Last Updated: February 2026
  */
 
 import { MetadataRoute } from "next";

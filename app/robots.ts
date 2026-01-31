@@ -8,14 +8,15 @@
  * - Specify sitemap location
  * - Optimized for maximum SEO visibility
  * 
- * Total Indexable Pages: ~202
+ * Total Indexable Pages: ~223
  * - Homepage, Static pages, Service categories
  * - 113 Service keyword pages
+ * - 21 Candle Light Dinner keyword pages
  * - 40 Surat area pages  
  * - 6 Package pages
  * - 25 Blog posts
  * 
- * Last Updated: January 2026
+ * Last Updated: February 2026
  */
 
 import { MetadataRoute } from "next";
@@ -51,7 +52,15 @@ export default function robots(): MetadataRoute.Robots {
           "/anniversary-*",
           "/proposal-*",
           "/candlelight-*",
+          "/candle-light-*",
           "/surprise-*",
+          "/romantic-*",
+          "/private-*",
+          "/rooftop-*",
+          "/luxury-*",
+          "/affordable-*",
+          "/premium-*",
+          "/outdoor-*",
           "/pre-wedding-*",
           "/pregnancy-*",
           "/baby-*",
@@ -85,6 +94,27 @@ export default function robots(): MetadataRoute.Robots {
           "/25th-*",
           "/wedding-*",
           "/expecting-*",
+          // Candle Light Dinner keyword pages
+          "/candle-light-dinner-in-surat",
+          "/romantic-candle-light-dinner-surat",
+          "/private-candle-light-dinner-surat",
+          "/rooftop-candle-light-dinner-surat",
+          "/luxury-candle-light-dinner-surat",
+          "/candle-light-dinner-for-couples-surat",
+          "/candle-light-dinner-near-me-surat",
+          "/candle-light-dinner-restaurant-surat",
+          "/surprise-candle-light-dinner-surat",
+          "/candle-light-dinner-with-decoration-surat",
+          "/candle-light-dinner-setup-at-home-surat",
+          "/candle-light-dinner-date-surat",
+          "/best-candle-light-dinner-places-surat",
+          "/affordable-candle-light-dinner-surat",
+          "/premium-candle-light-dinner-experience-surat",
+          "/candle-light-dinner-with-music-surat",
+          "/candle-light-dinner-for-girlfriend-surat",
+          "/candle-light-dinner-for-boyfriend-surat",
+          "/candle-light-dinner-packages-surat",
+          "/outdoor-candle-light-dinner-surat",
           // Surat area pages
           "/adajan-surat",
           "/athwa-surat",
