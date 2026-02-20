@@ -230,3 +230,20 @@
     display: none !important;
   }
 }
+
+/* Mobile package select readability */
+@media (max-width: 640px) {
+  [data-radix-select-viewport] [role="option"] {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  /* Ensure full package names show in forms */
+  .container {
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

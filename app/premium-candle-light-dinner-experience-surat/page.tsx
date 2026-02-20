@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: keyword.metaTitle,
   description: keyword.metaDescription,
   keywords: ["premium candle light dinner experience surat", "exclusive candlelight dining", "VIP dinner experience surat", "HIVY surat"],
-  alternates: { canonical: `https://hivy.co.in/${keyword.slug}` },
+  alternates: { canonical: `https://candlelightdinnersurat.com/${keyword.slug}` },
   openGraph: {
     title: keyword.metaTitle,
     description: keyword.metaDescription,
-    url: `https://hivy.co.in/${keyword.slug}`,
+    url: `https://candlelightdinnersurat.com/${keyword.slug}`,
     type: "website",
     locale: "en_IN",
     siteName: "HIVY - Place for Celebrations",

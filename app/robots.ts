@@ -161,23 +161,19 @@ export default function robots(): MetadataRoute.Robots {
           "/api/",
           "/admin/",
           "/private/",
-          "/_next/",
           "/leads/",
-          "/*.json$",
-          "/*.js$",
-          "/*.css$",
         ],
       },
       {
         // Google crawler - full access
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/_next/", "/leads/"],
+        disallow: ["/api/", "/admin/", "/leads/"],
       },
       {
         // Google Images crawler
         userAgent: "Googlebot-Image",
-        allow: ["/images/", "/packages/", "/public/"],
+        allow: ["/images/", "/packages/", "/hivy-images/", "/_next/image"],
         disallow: ["/api/", "/admin/"],
       },
       {

@@ -3,12 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Heart, Star, Users, Award, Clock, MapPin, Phone, Mail } from 'lucide-react';
+import { Heart, Star, Users, Award, Clock, MapPin, Phone, Mail, HelpCircle } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { FFCHeader, FFCFooter } from '@/components/ffc-layout';
-import { FFCWhatsAppFloat } from '@/components/ffc-booking-form';
+import { FFCWhatsAppFloat, FFCBookNowButton } from '@/components/ffc-booking-form';
 import FFCReviewsSlider from '@/components/ffc-reviews-slider';
 import { siteConfig } from '@/lib/ffc-config';
 
@@ -29,6 +30,15 @@ export default function FFCAboutPage() {
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Surat's Premier Destination for Candlelight Dinners & Romantic Celebrations
           </p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+            <FFCBookNowButton pageTitle="About Page" className="text-lg px-8 py-6" />
+            <a href={`tel:${siteConfig.phone}`}>
+              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
+                <Phone className="h-5 w-5 mr-2" />
+                {siteConfig.phone}
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -223,8 +233,110 @@ export default function FFCAboutPage() {
         </div>
       </section>
 
+      {/* Detailed About Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-100 text-rose-900 border-amber-300">
+              Our Journey
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              The HIVY Story — Surat's Most Trusted Candle Light Dinner Venue
+            </h2>
+          </div>
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+            <p>
+              HIVY — Place for Celebrations was born from a simple yet powerful idea: every couple in Surat deserves a beautiful, private space to celebrate their love without compromise. What started in 2019 as a small rooftop setup with fairy lights and a handful of candles has grown into Surat's most sought-after romantic dining destination, trusted by over 3,000 couples for their most cherished milestones.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">From a Dream to Surat's #1 Romantic Venue</h3>
+            <p>
+              Our founders saw a gap in Surat's dining scene — while the city had plenty of restaurants, none offered the level of privacy, personalization, and romance that couples truly craved. We set out to build a venue where every evening feels like a fairy tale, where every detail is thoughtfully curated, and where couples can express their love freely. Today, with five unique themed setups, a 4.9-star Google rating, and hundreds of five-star reviews, HIVY has become synonymous with romantic celebrations in Surat.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">What We Offer — Beyond Just a Candle Light Dinner</h3>
+            <p>
+              At HIVY, we host a wide range of celebrations: candle light dinners for couples, surprise birthday parties, wedding anniversary celebrations, marriage proposals, engagement reveals, pre-wedding photoshoots, pregnancy announcements, farewell dinners, and even last candle light dinners before marriage. Each celebration is backed by our complete setup-to-cleanup service, which means you don't need to worry about anything — our team handles the decorations, lighting, music, food, cake, and photography coordination so you can focus entirely on enjoying your time together.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">Our Commitment to Excellence</h3>
+            <p>
+              Quality, privacy, and attention to detail are the three pillars of everything we do at HIVY. Each of our five packages — Swing of LOVE, BoHo Chic, Fairy Tale Proposals, Tent of Romance, and The Elite Group Setup — is designed with a distinct aesthetic and mood. From bohemian chic to fairy-tale elegance, every setup features premium decorations, carefully arranged candle arrangements, fresh rose petals, custom lighting, and comfortable seating. Our gourmet menu, crafted by experienced chefs, includes a multi-course meal with Indian and Continental options, complemented by welcome drinks, desserts, and a celebratory cake.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">Why 3,000+ Couples Trust HIVY</h3>
+            <p>
+              The reason thousands of couples continue to choose HIVY is simple — we deliver on our promise every single time. When you book with HIVY, you get complete privacy (the venue is exclusively yours), a meticulously prepared setup that matches your expectations, punctual and professional service, and an evening that feels genuinely special. Our 4.9-star Google rating isn't just a number — it reflects the love, effort, and passion our team puts into every celebration. We invite you to read our reviews and see for yourself why couples across Surat, Gujarat, and beyond choose HIVY for their most important moments.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Google Reviews Slider Section */}
       <FFCReviewsSlider />
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-20 bg-amber-50">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-100 text-rose-900 border-amber-300">
+              <HelpCircle className="h-4 w-4 mr-2" /> Common Questions
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              FAQs About HIVY - Place for Celebrations
+            </h2>
+          </div>
+          <Accordion type="single" collapsible className="space-y-4">
+            {[
+              {
+                question: "What is HIVY and what does it offer?",
+                answer: "HIVY — Place for Celebrations is Surat's premier private candle light dinner venue, offering romantic dining experiences, surprise birthday setups, anniversary celebrations, marriage proposals, and more. Located in Adajan, we provide fully private, beautifully decorated setups exclusively for couples."
+              },
+              {
+                question: "Where is HIVY located in Surat?",
+                answer: "HIVY is located in Adajan, Surat, near Pratham Circle on Sevasi-Canal Road. We are easily accessible from all major areas of Surat including Vesu, Athwa, Piplod, City Light, Pal, Varachha, and Dumas Road."
+              },
+              {
+                question: "How long has HIVY been operating?",
+                answer: "HIVY has been creating magical celebrations for couples in Surat since 2019. In over 5 years, we have hosted 3,000+ romantic evenings and maintained a 4.9-star Google rating with hundreds of five-star reviews."
+              },
+              {
+                question: "Is HIVY only for couples?",
+                answer: "While most of our packages are designed for couples, we also offer The Elite Group Setup (₹5,400) for small group celebrations like double dates, engagement parties, and birthday gatherings. However, every booking is private — only your group is present during your celebration."
+              },
+              {
+                question: "What types of celebrations can I host at HIVY?",
+                answer: "You can host candle light dinners, surprise birthday celebrations, anniversary dinners, marriage proposals, engagement reveals, pre-wedding photoshoots, pregnancy announcements, farewell dinners, congratulation parties, and any other romantic or private celebration."
+              },
+              {
+                question: "How many packages does HIVY offer?",
+                answer: "HIVY offers five unique candle light dinner packages: Swing of LOVE (₹5,100), BoHo Chic (₹5,700), Fairy Tale Proposals (₹6,300), Tent of Romance (₹6,500), and The Elite Group Setup (₹5,400). Each has a distinct theme and set of inclusions."
+              },
+              {
+                question: "What is HIVY's Google rating?",
+                answer: "HIVY has a 4.9-star rating on Google with hundreds of verified reviews from happy couples. Our consistently high rating reflects our commitment to delivering exceptional romantic dining experiences every single time."
+              },
+              {
+                question: "Does HIVY provide food or only decoration?",
+                answer: "HIVY provides a complete experience that includes both premium decorations AND a multi-course gourmet meal. Every package includes a welcome drink, a multi-course meal (starter, main course, dessert), romantic ambiance with candles, fairy lights, rose petals, and background music."
+              },
+              {
+                question: "Can I visit HIVY before booking to see the venue?",
+                answer: "Yes! You are welcome to visit our venue and see the setups before booking. Contact us on WhatsApp to schedule a quick visit. You can also check our virtual tour, Instagram page, and Google reviews for photos and videos of actual celebrations."
+              },
+              {
+                question: "How can I contact HIVY for more information?",
+                answer: `You can reach HIVY by calling or WhatsApping ${siteConfig.phone}. You can also email us at ${siteConfig.email} or visit our Contact page to fill out the booking form. Our team typically responds within minutes.`
+              }
+            ].map((faq, index) => (
+              <AccordionItem key={index} value={`faq-${index}`} className="bg-white rounded-lg border border-amber-200 px-6">
+                <AccordionTrigger className="text-left font-medium hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-neutral-900 to-rose-950 text-white">

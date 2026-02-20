@@ -16,58 +16,47 @@ export interface GalleryItem {
   featured?: boolean;
 }
 
-// SEO-friendly gallery items with keyword-rich names
+// SEO-friendly gallery items with keyword-rich names — mapped to real images & videos
 export const galleryItems: GalleryItem[] = [
   // Featured Images
-  { type: 'image', src: '/images/gallery/rooftop-romantic-setup-surat-1.jpg', alt: 'Romantic rooftop setup in Surat', title: 'Romantic Rooftop', subtitle: 'Premium Package', featured: true },
-  { type: 'image', src: '/images/gallery/romantic-rooftop-candlelight-dinner-surat-1.jpg', alt: 'Candlelight dinner in Surat', title: 'Candlelight Dinner', featured: false },
-  { type: 'image', src: '/images/gallery/candlelight-dinner-setup-surat-1.jpg', alt: 'Romantic dinner setup Surat', title: 'Evening Romance', featured: false },
-  { type: 'video', src: '/videos/birthday-celebration-video-surat-1.mp4', alt: 'Birthday celebration video Surat', title: 'Birthday Celebration', featured: false },
-  { type: 'image', src: '/images/gallery/birthday-surprise-decoration-surat-1.jpg', alt: 'Birthday surprise decoration Surat', title: 'Birthday Surprise', featured: false },
-  { type: 'image', src: '/images/gallery/anniversary-celebration-surat-1.jpg', alt: 'Anniversary celebration Surat', title: 'Anniversary Special', featured: false },
-  { type: 'video', src: '/videos/anniversary-celebration-video-surat-1.mp4', alt: 'Anniversary celebration video Surat', title: 'Anniversary Video', featured: false },
-  { type: 'image', src: '/images/gallery/romantic-table-decoration-surat-1.jpg', alt: 'Romantic table decoration Surat', title: 'Table Decor', featured: false },
-  { type: 'image', src: '/images/gallery/birthday-balloon-decoration-surat-1.jpg', alt: 'Birthday balloon decoration Surat', title: 'Balloon Decoration', featured: false },
-  { type: 'image', src: '/images/gallery/anniversary-dinner-setup-surat-1.jpg', alt: 'Anniversary dinner setup Surat', title: 'Anniversary Dinner', featured: false },
-  { type: 'video', src: '/videos/rooftop-celebration-reel-surat-1.mp4', alt: 'Rooftop celebration reel Surat', title: 'Rooftop Vibes', featured: false },
-  { type: 'image', src: '/images/gallery/romantic-ambiance-cafe-surat-1.jpg', alt: 'Romantic ambiance cafe Surat', title: 'Romantic Ambiance', featured: false },
-  { type: 'image', src: '/images/gallery/couple-celebration-surat-1.jpg', alt: 'Couple celebration Surat', title: 'Couple Moment', featured: false },
-  { type: 'image', src: '/images/gallery/evening-romantic-celebration-surat-1.jpg', alt: 'Evening romantic celebration Surat', title: 'Evening Magic', featured: false },
-  { type: 'video', src: '/videos/birthday-reel-surat-1.mp4', alt: 'Birthday reel Surat', title: 'Birthday Reel', featured: false },
-  { type: 'image', src: '/images/gallery/glass-house-dinner-surat-1.jpg', alt: 'Glass house dinner Surat', title: 'Glass House', featured: false },
-  { type: 'image', src: '/images/gallery/night-romantic-setup-surat-1.jpg', alt: 'Night romantic setup Surat', title: 'Night Setup', featured: false },
-  { type: 'video', src: '/videos/romantic-moments-reel-surat-1.mp4', alt: 'Romantic moments reel Surat', title: 'Romantic Reel', featured: false },
-  { type: 'image', src: '/images/gallery/proposal-setup-surat-1.jpg', alt: 'Proposal setup Surat', title: 'Proposal Setup', featured: false },
-  { type: 'image', src: '/images/gallery/day-celebration-surat-1.jpg', alt: 'Day celebration Surat', title: 'Day Celebration', featured: false },
-  { type: 'video', src: '/videos/anniversary-dinner-video-surat-1.mp4', alt: 'Anniversary dinner video Surat', title: 'Anniversary Moments', featured: false },
-  { type: 'image', src: '/images/gallery/surprise-party-surat-1.jpg', alt: 'Surprise party Surat', title: 'Surprise Party', featured: false },
-  { type: 'image', src: '/images/gallery/romantic-dinner-date-surat-1.jpg', alt: 'Romantic dinner date Surat', title: 'Dinner Date', featured: false },
-  { type: 'video', src: '/videos/birthday-surprise-video-surat-1.mp4', alt: 'Birthday surprise video Surat', title: 'Birthday Surprise', featured: false },
-  { type: 'image', src: '/images/gallery/valentines-day-celebration-surat-1.jpg', alt: 'Valentines day celebration Surat', title: 'Valentine Setup', featured: false },
-  { type: 'image', src: '/images/gallery/valentines-dinner-surat-1.jpg', alt: 'Valentines dinner Surat', title: 'Valentine Dinner', featured: false },
-  { type: 'video', src: '/videos/valentines-celebration-video-surat-1.mp4', alt: 'Valentines celebration video Surat', title: 'Valentine Video', featured: false },
-  { type: 'image', src: '/images/gallery/valentines-romantic-setup-surat-1.jpg', alt: 'Valentines romantic setup Surat', title: 'Valentine Romance', featured: false },
-  { type: 'image', src: '/images/gallery/birthday-surprise-for-girlfriend-surat-1.jpg', alt: 'Birthday surprise for girlfriend Surat', title: 'Girlfriend Surprise', featured: false },
-  { type: 'video', src: '/videos/baby-moments-video-surat-1.mp4', alt: 'Baby moments video Surat', title: 'Baby Moments', featured: false },
-  { type: 'image', src: '/images/gallery/birthday-surprise-for-boyfriend-surat-1.jpg', alt: 'Birthday surprise for boyfriend Surat', title: 'Boyfriend Surprise', featured: false },
-  { type: 'image', src: '/images/gallery/birthday-room-decoration-surat-1.jpg', alt: 'Birthday room decoration Surat', title: 'Room Decoration', featured: false },
-  { type: 'video', src: '/videos/pre-wedding-couple-video-surat-1.mp4', alt: 'Pre-wedding couple video Surat', title: 'Pre-Wedding Video', featured: false },
-  { type: 'image', src: '/images/gallery/couple-birthday-party-surat-1.jpg', alt: 'Couple birthday party Surat', title: 'Birthday Party', featured: false },
-  { type: 'image', src: '/images/gallery/surprise-date-surat-1.jpg', alt: 'Surprise date Surat', title: 'Surprise Date', featured: false },
-  { type: 'video', src: '/videos/pre-wedding-shoot-video-surat-1.mp4', alt: 'Pre-wedding shoot video Surat', title: 'Pre-Wedding Shoot', featured: false },
-  { type: 'image', src: '/images/gallery/couple-moment-surat-1.jpg', alt: 'Couple moment Surat', title: 'Couple Moment', featured: false },
-  { type: 'image', src: '/images/gallery/pre-wedding-photoshoot-surat-1.jpg', alt: 'Pre-wedding photoshoot Surat', title: 'Pre-Wedding Photo', featured: false },
-  { type: 'video', src: '/videos/romantic-dinner-video-surat-1.mp4', alt: 'Romantic dinner video Surat', title: 'Romantic Dinner', featured: false },
-  { type: 'image', src: '/images/gallery/pre-wedding-shoot-surat-1.jpg', alt: 'Pre-wedding shoot Surat', title: 'Photo Shoot', featured: false },
-  { type: 'image', src: '/images/gallery/baby-shower-decoration-surat-1.jpg', alt: 'Baby shower decoration Surat', title: 'Baby Shower', featured: false },
-  { type: 'video', src: '/videos/proposal-video-surat-1.mp4', alt: 'Proposal video Surat', title: 'Proposal Video', featured: false },
-  { type: 'image', src: '/images/gallery/baby-moments-celebration-surat-1.jpg', alt: 'Baby moments celebration Surat', title: 'Baby Moments', featured: false },
-  { type: 'image', src: '/images/gallery/candlelight-dinner-for-couples-surat-1.jpg', alt: 'Candlelight dinner for couples Surat', title: 'Couple Dinner', featured: false },
-  { type: 'video', src: '/videos/couple-celebration-video-surat-1.mp4', alt: 'Couple celebration video Surat', title: 'Celebration Video', featured: false },
-  { type: 'image', src: '/images/gallery/rooftop-dinner-surat-1.jpg', alt: 'Rooftop dinner Surat', title: 'Rooftop Dinner', featured: false },
-  { type: 'image', src: '/images/gallery/private-dining-surat-1.jpg', alt: 'Private dining Surat', title: 'Private Dining', featured: false },
-  { type: 'image', src: '/images/gallery/romantic-venue-surat-1.jpg', alt: 'Romantic venue Surat', title: 'Romantic Venue', featured: false },
-  { type: 'image', src: '/images/gallery/celebration-venue-surat-1.jpg', alt: 'Celebration venue Surat', title: 'Celebration Venue', featured: false },
+  { type: 'image', src: '/images/gallery/rooftop-romantic-setup-surat-1.jpg', alt: 'Romantic rooftop candle light dinner setup in Surat', title: 'Romantic Rooftop', subtitle: 'Premium Package', featured: true },
+  { type: 'image', src: '/images/gallery/romantic-rooftop-candlelight-dinner-surat-1.jpg', alt: 'Candle light dinner at HIVY Surat', title: 'Candlelight Dinner', featured: false },
+  { type: 'image', src: '/images/gallery/candlelight-dinner-setup-surat-1.jpg', alt: 'Romantic dinner setup at HIVY Surat', title: 'Evening Romance', featured: false },
+  { type: 'video', src: '/videos/birthday-celebration-video-surat-1.mp4', alt: 'Birthday celebration video at HIVY Surat', title: 'Birthday Celebration', featured: false },
+  { type: 'image', src: '/images/gallery/birthday-surprise-decoration-surat-1.jpg', alt: 'Birthday surprise decoration at HIVY Surat', title: 'Birthday Surprise', featured: false },
+  { type: 'image', src: '/images/gallery/anniversary-celebration-surat-1.jpg', alt: 'Anniversary celebration at HIVY Surat', title: 'Anniversary Special', featured: false },
+  { type: 'video', src: '/videos/anniversary-celebration-video-surat-1.mp4', alt: 'Anniversary celebration video at HIVY Surat', title: 'Anniversary Video', featured: false },
+  { type: 'image', src: '/images/gallery/romantic-table-decoration-surat-1.jpg', alt: 'Romantic table decoration at HIVY Surat', title: 'Table Decor', featured: false },
+  { type: 'image', src: '/images/gallery/birthday-balloon-decoration-surat-1.jpg', alt: 'Birthday balloon decoration at HIVY Surat', title: 'Balloon Decoration', featured: false },
+  { type: 'image', src: '/images/gallery/anniversary-dinner-setup-surat-1.jpg', alt: 'Anniversary dinner setup at HIVY Surat', title: 'Anniversary Dinner', featured: false },
+  { type: 'video', src: '/videos/rooftop-celebration-reel-surat-1.mp4', alt: 'Rooftop celebration reel at HIVY Surat', title: 'Rooftop Vibes', featured: false },
+  { type: 'image', src: '/images/gallery/romantic-ambiance-cafe-surat-1.jpg', alt: 'Romantic ambiance at HIVY cafe Surat', title: 'Romantic Ambiance', featured: false },
+  { type: 'image', src: '/images/gallery/couple-celebration-surat-1.jpg', alt: 'Couple celebration at HIVY Surat', title: 'Couple Moment', featured: false },
+  { type: 'image', src: '/images/gallery/evening-romantic-celebration-surat-1.jpg', alt: 'Evening romantic celebration at HIVY Surat', title: 'Evening Magic', featured: false },
+  { type: 'image', src: '/images/gallery/glass-house-dinner-surat-1.jpg', alt: 'Glass house candle light dinner at HIVY Surat', title: 'Glass House', featured: false },
+  { type: 'image', src: '/images/gallery/night-romantic-setup-surat-1.jpg', alt: 'Night romantic setup at HIVY Surat', title: 'Night Setup', featured: false },
+  { type: 'image', src: '/images/gallery/proposal-setup-surat-1.jpg', alt: 'Proposal setup at HIVY Surat', title: 'Proposal Setup', featured: false },
+  { type: 'image', src: '/images/gallery/day-celebration-surat-1.jpg', alt: 'Day celebration at HIVY Surat', title: 'Day Celebration', featured: false },
+  { type: 'image', src: '/images/gallery/surprise-party-surat-1.jpg', alt: 'Surprise party at HIVY Surat', title: 'Surprise Party', featured: false },
+  { type: 'image', src: '/images/gallery/romantic-dinner-date-surat-1.jpg', alt: 'Romantic dinner date at HIVY Surat', title: 'Dinner Date', featured: false },
+  { type: 'image', src: '/images/gallery/valentines-day-celebration-surat-1.jpg', alt: 'Valentines day celebration at HIVY Surat', title: 'Valentine Setup', featured: false },
+  { type: 'image', src: '/images/gallery/valentines-dinner-surat-1.jpg', alt: 'Valentines dinner at HIVY Surat', title: 'Valentine Dinner', featured: false },
+  { type: 'image', src: '/images/gallery/valentines-romantic-setup-surat-1.jpg', alt: 'Valentines romantic setup at HIVY Surat', title: 'Valentine Romance', featured: false },
+  { type: 'image', src: '/images/gallery/birthday-surprise-for-girlfriend-surat-1.jpg', alt: 'Birthday surprise for girlfriend at HIVY Surat', title: 'Girlfriend Surprise', featured: false },
+  { type: 'image', src: '/images/gallery/birthday-surprise-for-boyfriend-surat-1.jpg', alt: 'Birthday surprise for boyfriend at HIVY Surat', title: 'Boyfriend Surprise', featured: false },
+  { type: 'image', src: '/images/gallery/birthday-room-decoration-surat-1.jpg', alt: 'Birthday room decoration at HIVY Surat', title: 'Room Decoration', featured: false },
+  { type: 'image', src: '/images/gallery/couple-birthday-party-surat-1.jpg', alt: 'Couple birthday party at HIVY Surat', title: 'Birthday Party', featured: false },
+  { type: 'image', src: '/images/gallery/surprise-date-surat-1.jpg', alt: 'Surprise date at HIVY Surat', title: 'Surprise Date', featured: false },
+  { type: 'image', src: '/images/gallery/couple-moment-surat-1.jpg', alt: 'Couple moment at HIVY Surat', title: 'Couple Moment', featured: false },
+  { type: 'image', src: '/images/gallery/pre-wedding-photoshoot-surat-1.jpg', alt: 'Pre-wedding photoshoot at HIVY Surat', title: 'Pre-Wedding Photo', featured: false },
+  { type: 'image', src: '/images/gallery/pre-wedding-shoot-surat-1.jpg', alt: 'Pre-wedding shoot at HIVY Surat', title: 'Photo Shoot', featured: false },
+  { type: 'image', src: '/images/gallery/baby-shower-decoration-surat-1.jpg', alt: 'Baby shower decoration at HIVY Surat', title: 'Baby Shower', featured: false },
+  { type: 'image', src: '/images/gallery/baby-moments-celebration-surat-1.jpg', alt: 'Baby moments celebration at HIVY Surat', title: 'Baby Moments', featured: false },
+  { type: 'image', src: '/images/gallery/candlelight-dinner-for-couples-surat-1.jpg', alt: 'Candlelight dinner for couples at HIVY Surat', title: 'Couple Dinner', featured: false },
+  { type: 'image', src: '/images/gallery/rooftop-dinner-surat-1.jpg', alt: 'Rooftop dinner at HIVY Surat', title: 'Rooftop Dinner', featured: false },
+  { type: 'image', src: '/images/gallery/private-dining-surat-1.jpg', alt: 'Private dining at HIVY Surat', title: 'Private Dining', featured: false },
+  { type: 'image', src: '/images/gallery/romantic-venue-surat-1.jpg', alt: 'Romantic venue at HIVY Surat', title: 'Romantic Venue', featured: false },
+  { type: 'image', src: '/images/gallery/celebration-venue-surat-1.jpg', alt: 'Celebration venue at HIVY Surat', title: 'Celebration Venue', featured: false },
 ];
 
 interface FFCGalleryProps {
@@ -181,9 +170,11 @@ export function FFCGallery({
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-cover"
-                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
                     onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                    onClick={(e) => { const v = e.currentTarget; v.paused ? v.play().catch(() => {}) : v.pause(); }}
                   />
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
                     <div className="w-10 h-10 md:w-12 md:h-12 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">

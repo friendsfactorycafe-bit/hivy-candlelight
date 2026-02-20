@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FFCHeader, FFCFooter } from '@/components/ffc-layout';
-import { FFCWhatsAppFloat } from '@/components/ffc-booking-form';
+import { FFCWhatsAppFloat, FFCBookNowButton } from '@/components/ffc-booking-form';
 import { siteConfig, getAllBlogPosts, BlogPost } from '@/lib/ffc-config';
 
 export default function FFCBlogPage() {
@@ -134,6 +134,7 @@ export default function FFCBlogPage() {
             Surat's premier rooftop celebration venue.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <FFCBookNowButton pageTitle="Blog Page" className="text-lg px-8 py-6" />
             <Button 
               size="lg" 
               className="bg-amber-500 text-neutral-900 hover:bg-amber-400"

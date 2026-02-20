@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { FFCHeader, FFCFooter } from '@/components/ffc-layout';
-import { FFCBookingForm, FFCWhatsAppFloat } from '@/components/ffc-booking-form';
+import { FFCBookingForm, FFCWhatsAppFloat, FFCBookNowButton } from '@/components/ffc-booking-form';
 import { FFCGalleryCompact } from '@/components/ffc-gallery';
 import { ServiceCategory, getVisiblePackages, suratAreas, siteConfig, formatPrice } from '@/lib/ffc-config';
 
@@ -28,17 +28,17 @@ export default function FFCServicePage({ service }: ServicePageProps) {
       <div className="bg-stone-100 py-4">
         <div className="container mx-auto px-4">
           <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-yellow-800">Home</Link>
+            <Link href="/" className="text-gray-500 hover:text-rose-900">Home</Link>
             <ChevronRight className="h-4 w-4 text-gray-400" />
-            <Link href="/services" className="text-gray-500 hover:text-yellow-800">Services</Link>
+            <Link href="/services" className="text-gray-500 hover:text-rose-900">Services</Link>
             <ChevronRight className="h-4 w-4 text-gray-400" />
-            <span className="text-yellow-800 font-medium">{service.name}</span>
+            <span className="text-rose-900 font-medium">{service.name}</span>
           </nav>
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-yellow-800 via-stone-500 to-yellow-900 text-white py-16 md:py-20">
+      <section className="bg-gradient-to-br from-rose-950 via-neutral-900 to-amber-900 text-white py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
@@ -53,8 +53,12 @@ export default function FFCServicePage({ service }: ServicePageProps) {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <FFCBookNowButton 
+                  pageTitle={service.name} 
+                  className="bg-white text-rose-900 hover:bg-stone-100 text-lg px-8 py-6" 
+                />
                 <a href={`tel:${siteConfig.phone}`}>
-                  <Button size="lg" className="bg-white text-yellow-800 hover:bg-stone-100 w-full sm:w-auto">
+                  <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto">
                     <Phone className="h-5 w-5 mr-2" />
                     Call Now
                   </Button>
@@ -133,13 +137,13 @@ export default function FFCServicePage({ service }: ServicePageProps) {
                     <span className="text-5xl">{pkg.emoji}</span>
                   </div>
                   <CardContent className="p-4">
-                    <h3 className="font-semibold mb-1 group-hover:text-yellow-800 transition-colors line-clamp-1">
+                    <h3 className="font-semibold mb-1 group-hover:text-rose-900 transition-colors line-clamp-1">
                       {pkg.name}
                     </h3>
                     <p className="text-gray-600 text-sm line-clamp-2 mb-2">
                       {pkg.shortDescription}
                     </p>
-                    <p className="text-lg font-bold text-yellow-800">
+                    <p className="text-lg font-bold text-rose-900">
                       {formatPrice(pkg.price)}
                     </p>
                   </CardContent>
@@ -150,7 +154,7 @@ export default function FFCServicePage({ service }: ServicePageProps) {
           
           <div className="text-center mt-8">
             <Link href="/packages">
-              <Button className="bg-yellow-800 hover:bg-yellow-900">
+              <Button className="bg-rose-900 hover:bg-rose-950">
                 View All Packages <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
             </Link>
@@ -175,11 +179,11 @@ export default function FFCServicePage({ service }: ServicePageProps) {
                 href={`/services/${service.slug}/${keyword.slug}`}
                 className="block"
               >
-                <Card className="border-stone-200 hover:border-yellow-200 hover:shadow-md transition-all group">
+                <Card className="border-stone-200 hover:border-amber-200 hover:shadow-md transition-all group">
                   <CardContent className="p-4">
-                    <h3 className="font-medium group-hover:text-yellow-800 transition-colors flex items-center justify-between">
+                    <h3 className="font-medium group-hover:text-rose-900 transition-colors flex items-center justify-between">
                       {keyword.title}
-                      <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-yellow-800" />
+                      <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-rose-900" />
                     </h3>
                   </CardContent>
                 </Card>
@@ -193,7 +197,7 @@ export default function FFCServicePage({ service }: ServicePageProps) {
       <section className="py-16 bg-stone-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-stone-200 text-yellow-900 border-stone-300">
+            <Badge className="mb-4 bg-stone-200 text-rose-950 border-stone-300">
               <MapPin className="h-4 w-4 mr-2" /> Service Areas
             </Badge>
             <h2 className="text-3xl font-bold mb-4 font-serif">
@@ -207,14 +211,14 @@ export default function FFCServicePage({ service }: ServicePageProps) {
               <Link 
                 key={area.slug}
                 href={`/${area.slug}`}
-                className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-yellow-800 hover:text-white transition-colors border border-stone-300 text-sm"
+                className="px-4 py-2 bg-white rounded-full text-gray-700 hover:bg-rose-900 hover:text-white transition-colors border border-stone-300 text-sm"
               >
                 {service.name} in {area.name}
               </Link>
             ))}
             <Link 
               href="/areas"
-              className="px-4 py-2 bg-yellow-800 rounded-full text-white hover:bg-yellow-900 transition-colors text-sm"
+              className="px-4 py-2 bg-rose-900 rounded-full text-white hover:bg-rose-950 transition-colors text-sm"
             >
               View All Areas
             </Link>
@@ -236,15 +240,15 @@ export default function FFCServicePage({ service }: ServicePageProps) {
               
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-yellow-800" />
+                  <Check className="h-5 w-5 text-rose-900" />
                   <span>No commitment booking request</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-yellow-800" />
+                  <Check className="h-5 w-5 text-rose-900" />
                   <span>Quick WhatsApp confirmation</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-yellow-800" />
+                  <Check className="h-5 w-5 text-rose-900" />
                   <span>Flexible rescheduling available</span>
                 </div>
               </div>

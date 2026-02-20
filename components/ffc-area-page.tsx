@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight, Star, Check, Phone, MessageCircle, MapPin, Heart, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -20,8 +21,55 @@ export default function FFCAreaPage({ area }: AreaPageProps) {
   // Get nearby areas (excluding current)
   const nearbyAreas = suratAreas.filter(a => a.slug !== area.slug).slice(0, 8);
 
+  // Area FAQ data for schema
+  const areaFaqs = [
+    { question: `How do couples from ${area.name} reach HIVY for candle light dinner?`, answer: `HIVY is conveniently located in Adajan, Surat and easily accessible from ${area.name}. You can reach us by car, auto, or cab in a short time. Search "HIVY - Place For Celebration" on Google Maps for precise directions from ${area.name}.` },
+    { question: "What is included in the candle light dinner package?", answer: "Our candle light dinner packages include premium decoration with candles, rose petals, fairy lights, a multi-course gourmet meal, welcome drinks, soft background music, complimentary cake, and a completely private setup exclusively for you and your partner." },
+    { question: `What are the booking options for couples from ${area.name}?`, answer: `Couples from ${area.name} can book their candle light dinner via WhatsApp at ${siteConfig.phone}, phone call, or our online booking form. We recommend booking 2-3 days in advance, especially for weekends and holidays.` },
+    { question: "Is the candle light dinner venue completely private?", answer: "Yes! Your candle light dinner at HIVY is 100% private. The entire venue is reserved exclusively for you and your partner during your 3-hour booking slot." },
+    { question: `What is the price of candle light dinner for couples from ${area.name}?`, answer: "Our candle light dinner packages start from ₹5,100 (Swing of LOVE) and go up to ₹6,500 (Tent of Romance). Each package includes decorations, food, drinks, cake, music, and 3 hours of private time." },
+    { question: `What time slots are available for candle light dinner near ${area.name}?`, answer: "We offer multiple time slots: Lunch (12-3 PM, 1-4 PM, 2-5 PM), Evening (4-7 PM, 5-8 PM, 6-9 PM), and Dinner (7-10 PM, 7:30-10:30 PM, 8-11 PM)." },
+    { question: `Can I plan a surprise birthday dinner for my partner from ${area.name}?`, answer: "Absolutely! We specialize in surprise celebrations. Share your plan with our team, and we'll coordinate every detail discreetly." },
+    { question: "Do you offer proposal or anniversary setups?", answer: "Yes! Our Fairy Tale Proposals package (₹6,300) is designed specifically for proposals. For anniversaries, all packages can be customized with personalized banners, extra flowers, and special décor." },
+    { question: `Is parking available for couples coming from ${area.name}?`, answer: "Yes, free parking is available at our Adajan venue for both two-wheelers and four-wheelers." },
+    { question: "What is the cancellation and rescheduling policy?", answer: "Rescheduling must be informed at least one day prior. Your booking can be rescheduled within one month, subject to availability. No refund policy is applicable." }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": areaFaqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://candlelightdinnersurat.com" },
+              { "@type": "ListItem", "position": 2, "name": "Candle Light Dinner", "item": "https://candlelightdinnersurat.com/candle-light-dinner-in-surat" },
+              { "@type": "ListItem", "position": 3, "name": area.name, "item": `https://candlelightdinnersurat.com/${area.slug}` }
+            ]
+          })
+        }}
+      />
       <FFCHeader />
       
       {/* Breadcrumb */}
@@ -88,6 +136,13 @@ export default function FFCAreaPage({ area }: AreaPageProps) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Mobile Booking Form - Above the fold on mobile */}
+      <section className="lg:hidden py-8 bg-amber-50">
+        <div className="container mx-auto px-4">
+          <FFCBookingForm pageTitle={`Candle Light Dinner near ${area.name}`} />
         </div>
       </section>
 
@@ -200,8 +255,13 @@ export default function FFCAreaPage({ area }: AreaPageProps) {
                   {getVisiblePackages().slice(0, 4).map((pkg) => (
                     <Link key={pkg.id} href={`/packages/${pkg.slug}`}>
                       <Card className="h-full hover:shadow-lg transition-all hover:-translate-y-1 border-amber-200 group bg-white">
-                        <div className="aspect-video bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center">
-                          <span className="text-5xl">{pkg.emoji}</span>
+                        <div className="aspect-video bg-gradient-to-br from-amber-100 to-amber-50 relative overflow-hidden">
+                          <Image
+                            src={pkg.thumbnail}
+                            alt={`${pkg.name} - Candle Light Dinner in ${area.name} Surat`}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
                         </div>
                         <CardContent className="p-4">
                           <h3 className="font-semibold mb-1 group-hover:text-rose-900 transition-colors">
@@ -302,19 +362,43 @@ export default function FFCAreaPage({ area }: AreaPageProps) {
             {[
               {
                 question: `How do couples from ${area.name} reach HIVY for candle light dinner?`,
-                answer: `HIVY is conveniently located in Adajan, Surat and easily accessible from ${area.name}. You can reach us by car, auto, or cab in a short time. Contact us for exact directions to our candle light dinner venue.`
+                answer: `HIVY is conveniently located in Adajan, Surat and easily accessible from ${area.name}. You can reach us by car, auto, or cab in a short time. Search "HIVY - Place For Celebration" on Google Maps for precise directions from ${area.name}.`
               },
               {
                 question: "What is included in the candle light dinner package?",
-                answer: "Our candle light dinner packages include premium decoration with candles, rose petals, fairy lights, a multi-course gourmet meal, soft background music, and a completely private setup exclusively for you and your partner."
+                answer: "Our candle light dinner packages include premium decoration with candles, rose petals, fairy lights, a multi-course gourmet meal, welcome drinks, soft background music, complimentary cake, and a completely private setup exclusively for you and your partner."
               },
               {
-                question: "What are the booking options available for candle light dinner?",
-                answer: `Couples from ${area.name} can book their candle light dinner via WhatsApp, phone call, or our online form. We recommend booking 2-3 days in advance for your preferred slot.`
+                question: `What are the booking options for couples from ${area.name}?`,
+                answer: `Couples from ${area.name} can book their candle light dinner via WhatsApp at ${siteConfig.phone}, phone call, or our online booking form. We recommend booking 2-3 days in advance, especially for weekends and holidays.`
               },
               {
-                question: "Is the candle light dinner venue private?",
-                answer: "Yes! Your candle light dinner is 100% private. No other guests will be present during your booking slot, ensuring an intimate romantic experience."
+                question: "Is the candle light dinner venue completely private?",
+                answer: "Yes! Your candle light dinner at HIVY is 100% private. The entire venue is reserved exclusively for you and your partner during your 3-hour booking slot. No other guests will be present, ensuring a truly intimate romantic experience."
+              },
+              {
+                question: `What is the price of candle light dinner for couples from ${area.name}?`,
+                answer: "Our candle light dinner packages start from ₹5,100 (Swing of LOVE) and go up to ₹6,500 (Tent of Romance). Each package includes decorations, food, drinks, cake, music, and 3 hours of private time. The pricing is the same for all areas of Surat."
+              },
+              {
+                question: `What time slots are available for candle light dinner near ${area.name}?`,
+                answer: "We offer multiple time slots throughout the day: Lunch (12-3 PM, 1-4 PM, 2-5 PM), Evening (4-7 PM, 5-8 PM, 6-9 PM), and Dinner (7-10 PM, 7:30-10:30 PM, 8-11 PM). Choose the slot that suits you best."
+              },
+              {
+                question: `Can I plan a surprise birthday dinner for my partner from ${area.name}?`,
+                answer: "Absolutely! We specialize in surprise celebrations. Share your plan with our team, and we'll coordinate every detail discreetly — from the setup and decorations to a personalized cake and special touches. Your partner will be completely surprised."
+              },
+              {
+                question: "Do you offer proposal or anniversary setups?",
+                answer: "Yes! Our Fairy Tale Proposals package (₹6,300) is designed specifically for proposals with a grand archway, candle aisle, and dramatic reveal setup. For anniversaries, all our packages can be customized with personalized banners, extra flowers, and special décor."
+              },
+              {
+                question: `Is parking available for couples coming from ${area.name}?`,
+                answer: "Yes, free parking is available at our Adajan venue for both two-wheelers and four-wheelers. You can easily park and walk right in to your private candle light dinner setup."
+              },
+              {
+                question: "What is the cancellation and rescheduling policy?",
+                answer: "Rescheduling must be informed at least one day prior. Your booking can be rescheduled within one month, subject to availability. Please note that no refund policy is applicable, but rescheduling is always accommodated."
               }
             ].map((faq, index) => (
               <AccordionItem key={index} value={`faq-${index}`} className="bg-white rounded-lg border border-amber-200 px-6">

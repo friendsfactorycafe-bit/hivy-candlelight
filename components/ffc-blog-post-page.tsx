@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FFCHeader, FFCFooter } from '@/components/ffc-layout';
-import { FFCWhatsAppFloat } from '@/components/ffc-booking-form';
+import { FFCWhatsAppFloat, FFCBookNowButton } from '@/components/ffc-booking-form';
 import { siteConfig, BlogPost, getAllBlogPosts } from '@/lib/ffc-config';
 
 interface FFCBlogPostPageProps {
@@ -32,9 +32,9 @@ export default function FFCBlogPostPage({ post }: FFCBlogPostPageProps) {
       <div className="pt-20 bg-gray-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-yellow-800">Home</Link>
+            <Link href="/" className="hover:text-rose-900">Home</Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-yellow-800">Blog</Link>
+            <Link href="/blog" className="hover:text-rose-900">Blog</Link>
             <span>/</span>
             <span className="text-gray-900 truncate max-w-[200px]">{post.title}</span>
           </div>
@@ -86,7 +86,7 @@ export default function FFCBlogPostPage({ post }: FFCBlogPostPageProps) {
             </div>
 
             {/* Article Content */}
-            <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-yellow-800 prose-strong:text-gray-900">
+            <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-rose-900 prose-strong:text-gray-900">
               <div dangerouslySetInnerHTML={{ __html: articleContent }} />
             </div>
 
@@ -109,14 +109,14 @@ export default function FFCBlogPostPage({ post }: FFCBlogPostPageProps) {
                 </div>
                 <div className="flex gap-3">
                   <Button 
-                    className="bg-gradient-to-r from-yellow-800 to-yellow-700 hover:from-yellow-900 hover:to-yellow-800"
+                    className="bg-gradient-to-r from-rose-900 to-amber-700 hover:from-rose-800 hover:to-amber-600"
                     asChild
                   >
                     <Link href="/packages">View Packages</Link>
                   </Button>
                   <Button 
                     variant="outline"
-                    className="border-yellow-800 text-yellow-800 hover:bg-stone-100"
+                    className="border-rose-900 text-rose-900 hover:bg-stone-100"
                     asChild
                   >
                     <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer">
@@ -149,7 +149,7 @@ export default function FFCBlogPostPage({ post }: FFCBlogPostPageProps) {
                         />
                       </div>
                       <CardContent className="p-4">
-                        <h3 className="font-semibold text-gray-900 line-clamp-2 group-hover:text-yellow-800 transition-colors">
+                        <h3 className="font-semibold text-gray-900 line-clamp-2 group-hover:text-rose-900 transition-colors">
                           {relatedPost.title}
                         </h3>
                         <p className="text-sm text-gray-500 mt-2">{relatedPost.readTime} read</p>
@@ -163,12 +163,25 @@ export default function FFCBlogPostPage({ post }: FFCBlogPostPageProps) {
         </section>
       )}
 
+      {/* Book Now CTA */}
+      <section className="py-12 bg-gradient-to-br from-rose-950 via-neutral-900 to-amber-900 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 font-serif">
+            Ready to Create Your Own Magical Moment?
+          </h2>
+          <p className="text-white/80 mb-6 max-w-xl mx-auto">
+            Book your candle light dinner at HIVY and make unforgettable memories with your loved one.
+          </p>
+          <FFCBookNowButton pageTitle={`Blog - ${post.title}`} className="text-lg px-8 py-6" />
+        </div>
+      </section>
+
       {/* Back to Blog */}
       <div className="py-8 border-t">
         <div className="container mx-auto px-4">
           <Link 
             href="/blog" 
-            className="inline-flex items-center gap-2 text-yellow-800 hover:text-yellow-900 font-medium"
+            className="inline-flex items-center gap-2 text-rose-900 hover:text-rose-950 font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to all articles

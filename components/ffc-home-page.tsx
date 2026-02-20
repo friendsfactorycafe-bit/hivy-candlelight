@@ -91,18 +91,18 @@ const galleryItems = [
   { type: 'image', src: '/packages/swing-of-love/images/28.png', alt: 'Swing of Love Setup Surat', title: 'Swing of LOVE', subtitle: 'Premium Package', featured: true },
   { type: 'image', src: '/packages/boho-chic/images/46.png', alt: 'BoHo Chic Setup Surat', title: 'BoHo Chic', featured: false },
   { type: 'image', src: '/packages/fairy-tale-proposals/2.png', alt: 'Fairy Tale Proposals Surat', title: 'Fairy Tale Proposals', featured: false },
-  { type: 'video', src: '/videos/InShot_20250111_162317353.mp4', alt: 'Romantic celebration video Surat', title: 'Celebration Moments', featured: false },
+  { type: 'video', src: '/videos/birthday-celebration-video-surat-1.mp4', alt: 'Romantic celebration video Surat', title: 'Celebration Moments', featured: false },
   { type: 'image', src: '/packages/tent-of-romance/images/12.png', alt: 'Tent of Romance Setup Surat', title: 'Tent of Romance', featured: false },
   { type: 'image', src: '/packages/swing-of-love/images/29.png', alt: 'Swing setup Surat', title: 'Swing Décor', featured: false },
-  { type: 'video', src: '/videos/InShot_20250217_151234749.mp4', alt: 'Anniversary celebration video Surat', title: 'Anniversary Video', featured: false },
+  { type: 'video', src: '/videos/anniversary-celebration-video-surat-1.mp4', alt: 'Anniversary celebration video Surat', title: 'Anniversary Video', featured: false },
   { type: 'image', src: '/packages/boho-chic/images/47.png', alt: 'Bohemian ambiance cafe Surat', title: 'Boho Ambiance', featured: false },
   { type: 'image', src: '/packages/fairy-tale-proposals/3.png', alt: 'Fairy tale setup decoration Surat', title: 'Magical Setup', featured: false },
   { type: 'image', src: '/packages/tent-of-romance/images/13.png', alt: 'Romantic tent decoration Surat', title: 'Romantic Décor', featured: false },
-  { type: 'video', src: '/videos/VID_20251027_181020858.mp4', alt: 'Rooftop celebration reel Surat', title: 'Rooftop Vibes', featured: false },
+  { type: 'video', src: '/videos/rooftop-celebration-reel-surat-1.mp4', alt: 'Rooftop celebration reel Surat', title: 'Rooftop Vibes', featured: false },
   { type: 'image', src: '/packages/swing-of-love/images/30.png', alt: 'Romantic swing setup Surat', title: 'Love Swing', featured: false },
   { type: 'image', src: '/packages/boho-chic/images/48.png', alt: 'Night romantic setup Surat', title: 'Night Setup', featured: false },
   { type: 'image', src: '/packages/fairy-tale-proposals/4.png', alt: 'Evening romantic celebration Surat', title: 'Evening Magic', featured: false },
-  { type: 'video', src: '/videos/VID_20251120_191425995.mp4', alt: 'Birthday reel Surat', title: 'Birthday Reel', featured: false },
+  { type: 'video', src: '/videos/birthday-celebration-video-surat-1.mp4', alt: 'Birthday reel Surat', title: 'Birthday Reel', featured: false },
   { type: 'image', src: '/packages/tent-of-romance/images/14.png', alt: 'Proposal setup Surat', title: 'Proposal Setup', featured: false },
 ];
 
@@ -124,7 +124,7 @@ function GallerySection() {
     <section className="py-20 bg-gradient-to-br from-stone-100 via-white to-stone-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <Badge className="mb-4 bg-stone-200 text-yellow-900 border-stone-300">
+          <Badge className="mb-4 bg-stone-200 text-rose-950 border-stone-300">
             <ImageIcon className="h-4 w-4 mr-2" /> Candle Light Dinner Gallery
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
@@ -203,8 +203,9 @@ function GallerySection() {
                     playsInline
                     preload="metadata"
                     className="w-full h-full object-cover bg-stone-200"
-                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
                     onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                    onClick={(e) => { const v = e.currentTarget; v.paused ? v.play().catch(() => {}) : v.pause(); }}
                     onLoadedData={(e) => { e.currentTarget.currentTime = 0.5; }}
                   />
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/10 transition-colors">
@@ -330,6 +331,24 @@ export default function FFCHomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
       <FFCHeader />
       
       {/* Hero Section */}
@@ -646,6 +665,45 @@ export default function FFCHomePage() {
 
       {/* Google Reviews Slider */}
       <FFCReviewsSlider />
+
+      {/* About Our Candle Light Dinner Experience - SEO Content Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-amber-100 text-rose-900 border-amber-300">
+              About Our Venue
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              Why HIVY is Surat's Best Candle Light Dinner Destination
+            </h2>
+          </div>
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+            <p>
+              HIVY has become Surat's most beloved candle light dinner venue, offering couples an unparalleled romantic dining experience since 2019. Situated in the heart of Adajan, our private rooftop venue overlooks the vibrant cityscape of Surat, creating the perfect backdrop for intimate celebrations, proposals, anniversaries, and unforgettable date nights.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">A Complete Candle Light Dinner Experience in Surat</h3>
+            <p>
+              Every candle light dinner at HIVY is a meticulously crafted experience. From the moment you step onto our rooftop, you are greeted by the warm glow of hundreds of candles, lush rose petal arrangements, twinkling fairy lights, and soft romantic music that sets the mood for an evening you will cherish forever. Our dedicated team ensures that every detail—from the table setting and the flower arrangements to the curated multi-course gourmet menu—is designed to make your evening absolutely magical. We believe that a candle light dinner is more than just a meal; it is an expression of love, a celebration of togetherness, and a memory that lasts a lifetime.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">Private & Exclusive — Just for You</h3>
+            <p>
+              What truly sets HIVY apart from every other candle light dinner restaurant in Surat is our commitment to complete privacy. When you book a candle light dinner at HIVY, the entire venue is reserved exclusively for you and your partner. There are no other guests, no interruptions, and no distractions—just the two of you, surrounded by romance. This level of exclusivity is what has earned us a 4.9-star rating and the trust of over 3,000 couples who have celebrated their most cherished moments with us.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">Packages Designed for Every Celebration</h3>
+            <p>
+              Whether you are celebrating your first anniversary, planning a surprise birthday dinner for your partner, or looking for the perfect proposal venue in Surat, HIVY offers five distinct candle light dinner packages to suit every occasion and budget. Our setups range from the dreamy Swing of LOVE at ₹5,100 to the luxurious Tent of Romance at ₹6,500—each featuring unique décor themes, rose petal arrangements, candle-lit ambiance, gourmet dining, and three hours of private celebration time. Every package includes a welcome drink, multi-course meal, complimentary cake (in select packages), and romantic background music.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">Serving All Areas of Surat</h3>
+            <p>
+              Conveniently located in Adajan near Pratham Circle, HIVY is easily accessible from all major areas of Surat including Vesu, Athwa, Piplod, City Light, Pal, Dumas Road, Ghod Dod Road, Varachha, Althan, Ring Road, VIP Road, and more. Whether you live in Katargam or Udhna, a romantic candle light dinner at HIVY is just a short drive away. We have proudly served couples from every corner of Surat, making us the city's most trusted name in romantic private dining.
+            </p>
+            <h3 className="text-xl font-bold text-neutral-900 mt-8">Book Your Candle Light Dinner Today</h3>
+            <p>
+              Ready to create unforgettable memories? Booking your candle light dinner at HIVY is simple and instant. Reach out to us on WhatsApp at {siteConfig.phone}, share your preferred date and celebration type, and our team will take care of the rest. Weekend and holiday slots book quickly, so we recommend reserving your date in advance. Experience why thousands of couples in Surat choose HIVY for their most special moments—because every love story deserves a beautiful setting.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Gallery Section */}
       <GallerySection />

@@ -519,6 +519,22 @@ Each ${kwLower} package includes 3 hours of private venue access, welcome drinks
     {
       question: `What is the cancellation policy for ${kwLower} bookings?`,
       answer: `You can reschedule free of charge up to 48 hours before your ${kwLower} slot. Cancellations made 48+ hours in advance receive a refund minus processing fees.`
+    },
+    {
+      question: `What time slots are available for ${kwLower}?`,
+      answer: `We offer multiple time slots: Lunch (12-3 PM), Evening (4-7 PM, 5-8 PM, 6-9 PM), and Dinner (7-10 PM, 7:30-10:30 PM, 8-11 PM). Each ${kwLower} slot gives you 3 hours of exclusive private time.`
+    },
+    {
+      question: `How much does a ${kwLower} cost at HIVY?`,
+      answer: `Our ${kwLower} packages range from ₹5,100 (Swing of LOVE) to ₹6,500 (Tent of Romance). Each package is all-inclusive with decorations, food, drinks, cake, music, and 3 hours of private venue access.`
+    },
+    {
+      question: `Is ${kwLower} available for anniversaries and birthdays?`,
+      answer: `Absolutely! Our ${kwLower} setups are perfect for all romantic celebrations — anniversaries, birthdays, proposals, date nights, and more. We can customize the decorations with personalized touches for your specific occasion.`
+    },
+    {
+      question: `Where is the best ${kwLower} venue in ${city}?`,
+      answer: `HIVY - Place for Celebrations in Adajan is rated 4.9 stars on Google and trusted by 3,000+ couples as ${city}'s best ${kwLower} venue. We offer complete privacy, stunning setups, gourmet dining, and professional service.`
     }
   ];
 

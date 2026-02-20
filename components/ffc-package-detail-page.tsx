@@ -3,11 +3,12 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Gift, ChevronRight, Star, Clock, Check, ChevronLeft, Heart, Camera, Music, MapPin } from 'lucide-react';
+import { Gift, ChevronRight, Star, Clock, Check, ChevronLeft, Heart, Camera, Music, MapPin, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { FFCHeader, FFCFooter } from '@/components/ffc-layout';
 import { FFCBookingForm, FFCWhatsAppFloat } from '@/components/ffc-booking-form';
 import { SetupPackage, packages, formatPrice, siteConfig } from '@/lib/ffc-config';
@@ -51,8 +52,82 @@ export default function FFCPackageDetailPage({ package: pkg }: PackageDetailPage
     setSelectedImage(index);
   };
 
+  // FAQ data for this package
+  const packageFaqs = [
+    { question: `What is included in the ${pkg.name} package?`, answer: `The ${pkg.name} package (${formatPrice(pkg.price)}) includes 3 hours of private celebration time, a welcome drink, multi-course gourmet meal, romantic candle & fairy light decorations, rose petal arrangements, soft background music, and exclusive venue access. ${pkg.cakeIncluded ? 'A complimentary celebration cake is also included.' : 'Celebration cake is available as an add-on for ₹500.'}` },
+    { question: `How much does the ${pkg.name} setup cost?`, answer: `The ${pkg.name} package is priced at ${formatPrice(pkg.price)} per couple. This is all-inclusive covering decorations, food, drinks, and 3 hours of private venue access.` },
+    { question: `Is the ${pkg.name} setup available every day?`, answer: `Yes, the ${pkg.name} setup is available every day of the week including weekends and holidays. We offer multiple time slots: lunch, evening, and dinner.` },
+    { question: `Can I customize the ${pkg.name} decorations?`, answer: `Absolutely! You can add extra roses, balloon decorations, personalized banners, name plates, photo frames, and more to the ${pkg.name} setup.` },
+    { question: `How do I book the ${pkg.name} package?`, answer: `You can book by contacting us on WhatsApp at ${siteConfig.phone}, calling us directly, or filling out the booking form on this page.` },
+    { question: `Is the ${pkg.name} venue completely private?`, answer: `Yes! When you book the ${pkg.name} package, the entire venue is reserved exclusively for you and your partner.` },
+    { question: `What food is served with the ${pkg.name} package?`, answer: `The ${pkg.name} package includes a multi-course gourmet meal with Indian and Continental options — starters, main course, and dessert plus a welcome drink.` },
+    { question: `Can I bring my own photographer to the ${pkg.name} setup?`, answer: `Yes, you are welcome to bring your own photographer. The setup is designed to be photo-ready with beautiful backdrops.` },
+    { question: `What is the cancellation policy for ${pkg.name}?`, answer: `Rescheduling must be informed at least one day prior. Your booking can be rescheduled within one month, subject to availability. No Refund Policy applicable.` },
+    { question: `Is ${pkg.name} suitable for proposals and anniversaries?`, answer: `Yes! The ${pkg.name} setup is perfect for proposals, anniversaries, birthday surprises, date nights, and all romantic celebrations.` }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* FAQ Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": packageFaqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+      {/* Product Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": `${pkg.name} - Candle Light Dinner Package`,
+            "description": pkg.shortDescription,
+            "image": pkg.thumbnail,
+            "brand": { "@type": "Brand", "name": "HIVY - Place for Celebrations" },
+            "offers": {
+              "@type": "Offer",
+              "price": pkg.price,
+              "priceCurrency": "INR",
+              "availability": "https://schema.org/InStock",
+              "url": `https://candlelightdinnersurat.com/packages/${pkg.slug}`
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "150",
+              "bestRating": "5"
+            }
+          })
+        }}
+      />
+      {/* Breadcrumb Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://candlelightdinnersurat.com" },
+              { "@type": "ListItem", "position": 2, "name": "Packages", "item": "https://candlelightdinnersurat.com/packages" },
+              { "@type": "ListItem", "position": 3, "name": pkg.name, "item": `https://candlelightdinnersurat.com/packages/${pkg.slug}` }
+            ]
+          })
+        }}
+      />
       <FFCHeader />
       
       {/* Breadcrumb */}
@@ -269,7 +344,7 @@ export default function FFCPackageDetailPage({ package: pkg }: PackageDetailPage
                   </>
                 ) : (
                   <>
-                    <p className="text-yellow-900 text-sm md:text-base"><strong>Cake:</strong> ₹500/- (Extra Cost)</p>
+                    <p className="text-rose-950 text-sm md:text-base"><strong>Cake:</strong> ₹500/- (Extra Cost)</p>
                     <p className="text-gray-700 text-sm md:text-base mt-1"><strong>Champagne:</strong> ₹500/- (Non-Alcoholic Fruit Flavour)</p>
                   </>
                 )}
@@ -348,7 +423,7 @@ export default function FFCPackageDetailPage({ package: pkg }: PackageDetailPage
               <p className="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
                 Rescheduling must be informed at least one day prior. Event can be rescheduled within one month, subject to availability.
               </p>
-              <p className="text-yellow-800 font-semibold text-sm md:text-base">
+              <p className="text-rose-900 font-semibold text-sm md:text-base">
                 * No Refund Policy Applicable
               </p>
             </div>
@@ -376,13 +451,13 @@ export default function FFCPackageDetailPage({ package: pkg }: PackageDetailPage
                     />
                   </div>
                   <CardContent className="p-2 md:p-4">
-                    <h3 className="font-semibold text-sm md:text-lg mb-1 group-hover:text-yellow-800 transition-colors line-clamp-2">
+                    <h3 className="font-semibold text-sm md:text-lg mb-1 group-hover:text-rose-900 transition-colors line-clamp-2">
                       {relPkg.name}
                     </h3>
                     <p className="text-gray-600 text-xs md:text-sm line-clamp-2 mb-1 md:mb-2 hidden md:block">
                       {relPkg.shortDescription}
                     </p>
-                    <p className="text-base md:text-xl font-bold text-yellow-800">
+                    <p className="text-base md:text-xl font-bold text-rose-900">
                       {formatPrice(relPkg.price)}
                     </p>
                   </CardContent>
@@ -390,6 +465,70 @@ export default function FFCPackageDetailPage({ package: pkg }: PackageDetailPage
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12 md:py-16 bg-amber-50">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-serif">
+              FAQs About {pkg.name}
+            </h2>
+          </div>
+          <Accordion type="single" collapsible className="space-y-4">
+            {[
+              {
+                question: `What is included in the ${pkg.name} package?`,
+                answer: `The ${pkg.name} package (${formatPrice(pkg.price)}) includes 3 hours of private celebration time, a welcome drink, multi-course gourmet meal, romantic candle & fairy light decorations, rose petal arrangements, soft background music, and exclusive venue access. ${pkg.cakeIncluded ? 'A complimentary celebration cake is also included.' : 'Celebration cake is available as an add-on for ₹500.'}`
+              },
+              {
+                question: `How much does the ${pkg.name} setup cost?`,
+                answer: `The ${pkg.name} package is priced at ${formatPrice(pkg.price)} per couple. This is an all-inclusive price covering decorations, food, drinks, and 3 hours of private venue access. Additional customizations can be added at extra cost.`
+              },
+              {
+                question: `Is the ${pkg.name} setup available every day?`,
+                answer: `Yes, the ${pkg.name} setup is available every day of the week including weekends and holidays. We offer multiple time slots: lunch, evening, and dinner. Weekend slots are in high demand, so advance booking is recommended.`
+              },
+              {
+                question: `Can I customize the ${pkg.name} decorations?`,
+                answer: `Absolutely! You can add extra roses, balloon decorations, personalized banners, name plates, photo frames, and more to the ${pkg.name} setup. Share your ideas when booking, and our team will provide options and pricing.`
+              },
+              {
+                question: `How do I book the ${pkg.name} package?`,
+                answer: `You can book the ${pkg.name} package by contacting us on WhatsApp at ${siteConfig.phone}, calling us directly, or filling out the booking form on this page. Select your preferred date and time slot, and our team will confirm availability.`
+              },
+              {
+                question: `Is the ${pkg.name} venue completely private?`,
+                answer: `Yes! When you book the ${pkg.name} package, the entire venue is reserved exclusively for you and your partner (or group). No other guests will be present during your 3-hour celebration window.`
+              },
+              {
+                question: `What food is served with the ${pkg.name} package?`,
+                answer: `The ${pkg.name} package includes a multi-course gourmet meal with Indian and Continental options — starters, main course, and dessert. A welcome drink is also included. You can share dietary preferences or special requests when booking.`
+              },
+              {
+                question: `Can I bring my own photographer to the ${pkg.name} setup?`,
+                answer: `Yes, you are welcome to bring your own photographer. The ${pkg.name} setup is designed to be photo-ready with beautiful backdrops. We can also arrange professional photography as an add-on service.`
+              },
+              {
+                question: `What is the cancellation policy for ${pkg.name}?`,
+                answer: `Rescheduling must be informed at least one day prior. Your booking can be rescheduled within one month, subject to availability. Please note: No Refund Policy is applicable. However, rescheduling is always accommodated.`
+              },
+              {
+                question: `Is ${pkg.name} suitable for proposals and anniversaries?`,
+                answer: `Yes! The ${pkg.name} setup is perfect for proposals, anniversaries, birthday surprises, date nights, and all romantic celebrations. Our team can coordinate surprise elements discreetly to make the moment extra special.`
+              }
+            ].map((faq, index) => (
+              <AccordionItem key={index} value={`faq-${index}`} className="bg-white rounded-lg border border-stone-200 px-6">
+                <AccordionTrigger className="text-left font-medium hover:no-underline">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
